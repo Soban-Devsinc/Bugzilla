@@ -1,0 +1,6 @@
+<h1> Following are all Projects </h1>
+
+<% @allprojects.each do |project| %>
+<p>Title: <%= link_to project.title, project_path(project) %></p>
+<p>Description: <%= project.description %></p> <br>
+<% end %>
