@@ -1,0 +1,34 @@
+<%= link_to 'Back', project_path(@project) %>
+
+<h1>Edit Project</h1>
+
+<% if flash[:errors].present? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(flash[:errors].count, "error") %> prohibited this project from being saved:</h2>
+    <ul>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @project do |p| %>
+  <div>
+    <%= p.label :title %><br>
+    <%= p.text_field :title %>
+  </div>
+  <div>
+    <%= p.label :description %><br>
+    <%= p.text_area :description %>
+  </div>
+
+  <div>
+    <%= p.label :errors %><br>
+    <%= p.collection_select :project_bugs, @bugs, :id, :title %>
+  </div>
+  <br>
+  <div>
+    <%= p.submit 'Update Project' %>
+  </div>
+<% end %>

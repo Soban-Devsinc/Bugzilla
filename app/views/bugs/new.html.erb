@@ -1,0 +1,26 @@
+<%= link_to 'Back', '/' %>
+
+<h1><%='Create a new bug' %></h1>
+
+<% if flash[:errors].present? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(flash[:errors].count, "error") %> prohibited this user from being saved:</h2>
+    <ul>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @bug do |b| %>
+Title: <%= b.text_field :title %> <br> <br>
+Description: <%= b.text_field :description %> <br> <br>
+Deadline: <%= b.datetime_select :deadline %> <br> <br>
+Screenshot: <%= b.file_field :image %> <br> <br>
+
+Type: <%= b.select :bug_type, Bug.bug_types.keys.map%> <br> <br>
+Status: <%= b.select :status, Bug.statuses.keys.map%> <br> <br>
+
+<%= b.submit %>
+<% end %>
