@@ -1,6 +1,10 @@
 <h1> Following are all Projects </h1>
 
 <% @allprojects.each do |project| %>
-<p>Title: <%= link_to project.title, project_path(project) %></p>
-<p>Description: <%= project.description %></p> <br>
+<p>Title: <%= project.title %></p>
+<p>Description: <%= project.description %></p>
+  <% project.users.each do |u| %>
+    <p>Manager: <%= u.name %></p>
+  <% end %>
+<br>
 <% end %>

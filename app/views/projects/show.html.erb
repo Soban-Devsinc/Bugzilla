@@ -4,8 +4,12 @@
 
 <p><strong>Title:</strong> <%= @project.title %></p>
 <p><strong>Description:</strong> <%= @project.description %></p>
-<p><strong>Developer:</strong> <%= @developers %></p>
+<p><strong>Developer:</strong>
 
+<% @project.users.each do |u| %>
+<%= u.name %>
+<% end %>
+</p>
 
 <%= link_to 'Edit this project', edit_project_url %>
 <%= link_to 'Delete Project', project_path(@project), data: { "turbo-method": :delete } %>

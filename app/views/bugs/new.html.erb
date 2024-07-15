@@ -17,10 +17,10 @@
 Title: <%= b.text_field :title %> <br> <br>
 Description: <%= b.text_field :description %> <br> <br>
 Deadline: <%= b.datetime_select :deadline %> <br> <br>
-Screenshot: <%= b.file_field :screenshot %> <br> <br>
+Screenshot: <%= b.file_field :image %> <br> <br>
 
+Type: <%= b.select :bug_type, Bug.bug_types.keys.map%> <br> <br>
+Status: <%= b.select :status, Bug.statuses.keys.map%> <br> <br>
 
 <%= b.submit %>
 <% end %>
-
-

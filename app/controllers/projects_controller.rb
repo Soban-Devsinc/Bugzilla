@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :get_project, only: [:show, :edit, :update, :destroy]
   def index
-    @projects = current_user.projects
-    @allprojects = Project.all.includes(:users)
+    @projects = current_user.projects # for manager
+    @allprojects = Project.all # for qa
   end
 
   def new
@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @bugs = Bug.all
   end
 
   def update
@@ -43,7 +44,7 @@ class ProjectsController < ApplicationController
 
   protected
 
-  def set_project
+  def get_project
     @project = Project.find(params[:id])
     @developer = @project.users.where(usertype: 'Developer')
   end

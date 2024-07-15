@@ -22,6 +22,12 @@
     <%= p.label :description %><br>
     <%= p.text_area :description %>
   </div>
+
+  <div>
+    <%= p.label :errors %><br>
+    <%= p.collection_select :project_bugs, @bugs, :id, :title %>
+  </div>
+  <br>
   <div>
     <%= p.submit 'Update Project' %>
   </div>

@@ -3,10 +3,13 @@
 <h1> Following are your Bugs </h1>
 
 <% @bugs.each do |bug| %>
-<p>Title: <%= link_to bug.title, bug_path(bug) %></p>
+<p><strong>ID: </strong> <%= bug.id %></p>
+<p>Title: <%= bug.title %></p>
 <p>Description: <%= bug.description %></p>
 <p>Deadline: <%= bug.deadline %></p>
-<p>Screenshot: <%= bug.screenshot %></p>
-<p>Type: <%= bug.type %></p>
+<p>Type: <%= bug.bug_type %></p>
+<p>Status: <%= bug.status %></p>
+
+<p><%= image_tag bug.image, size: "500x350" %></p> <br>
 <% end %>
 
