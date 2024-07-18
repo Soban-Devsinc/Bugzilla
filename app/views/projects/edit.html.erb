@@ -1,17 +1,6 @@
-<%= link_to 'Back', project_path(@project) %>
+<%= link_to 'Back to project', project_path(@project) %>
 
-<h1>Edit Project</h1>
-
-<% if flash[:errors].present? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(flash[:errors].count, "error") %> prohibited this project from being saved:</h2>
-    <ul>
-      <% flash[:errors].each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<h1><%='Edit project' %></h1>
 
 <%= form_with model: @project do |p| %>
   <div>
@@ -22,12 +11,10 @@
     <%= p.label :description %><br>
     <%= p.text_area :description %>
   </div>
-
   <div>
-    <%= p.label :errors %><br>
-    <%= p.collection_select :project_bugs, @bugs, :id, :title %>
+    <%= p.label "Select Developers" %><br>
+    <%= p.collection_check_boxes :user_ids, @developers, :id, :name %>
   </div>
-  <br>
   <div>
     <%= p.submit 'Update Project' %>
   </div>

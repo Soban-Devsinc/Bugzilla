@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @developers = User.where(usertype: 'Developer')
   end
 
   def create
@@ -25,10 +24,12 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @developers = User.where(usertype: 'Developer')
     @bugs = Bug.all
   end
 
   def update
+
     if @project.update(project_params)
       redirect_to project_path(@project), notice: 'Project was successfully updated.'
     else
@@ -50,6 +51,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:id, :title, :description)
+    params.require(:project).permit(:id, :title, :description, user_ids: [])
   end
 end

@@ -17,7 +17,5 @@
 Title: <%= p.text_field :title %> <br> <br>
 Description: <%= p.text_field :description %> <br> <br>
 
-Select Developer: <%= p.collection_select :developer_id, @developers, :id, :name %> <br> <br>
-
 <%= p.submit %>
 <% end %>
