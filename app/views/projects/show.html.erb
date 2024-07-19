@@ -1,0 +1,21 @@
+<%= link_to 'Back to Projects', projects_path %>
+
+<h1>Project Details</h1>
+
+<p><strong>Title:</strong> <%= @project.title %></p>
+<p><strong>Description:</strong> <%= @project.description %></p>
+
+<p><strong>Manager:</strong>
+<% @managers.each do |u| %>
+<%= u.name %>
+<% end %>
+</p>
+
+<p><strong>Developer:</strong>
+<% @developers.each do |u| %>
+<%= u.name %> -
+<% end %>
+</p>
+
+<%= link_to 'Edit this project', edit_project_url %>
+<%= link_to 'Delete Project', project_path(@project), data: { "turbo-method": :delete } %>

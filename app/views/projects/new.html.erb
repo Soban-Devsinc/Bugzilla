@@ -1,0 +1,21 @@
+<%= link_to 'Back', '/' %>
+
+<h1><%='Create a new project' %></h1>
+
+<% if flash[:errors].present? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(flash[:errors].count, "error") %> prohibited this user from being saved:</h2>
+    <ul>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @project do |p| %>
+Title: <%= p.text_field :title %> <br> <br>
+Description: <%= p.text_field :description %> <br> <br>
+
+<%= p.submit %>
+<% end %>

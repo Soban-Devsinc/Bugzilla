@@ -1,0 +1,9 @@
+<%= link_to 'Back', '/' %>
+
+<% if current_user.usertype == 'Manager' %>
+  <%= render 'manager_projects' %>
+  <% elsif current_user.usertype == 'Developer' %>
+  <%= render 'developer_projects' %>
+<% elsif current_user.usertype == 'QA' %>
+  <%= render 'qa_projects' %>
+<% end %>

@@ -1,0 +1,23 @@
+<%= link_to 'Back to project', project_path(@project) %>
+
+<h1><%='Edit project' %></h1>
+
+<%= form_with model: @project do |p| %>
+  <div>
+    <%= p.label :title %><br>
+    <%= p.text_field :title %>
+  </div>
+  <div>
+    <%= p.label :description %><br>
+    <%= p.text_area :description %>
+  </div>
+
+  <div>
+    <%= p.label "Select Developers" %><br>
+    <%= p.collection_check_boxes :user_ids, @developer, :id, :name %>
+  </div>
+
+  <div>
+    <%= p.submit 'Update Project' %>
+  </div>
+<% end %>

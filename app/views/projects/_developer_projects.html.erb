@@ -1,0 +1,14 @@
+<h1> Following are your Projects </h1>
+
+<% @projects.each do |project| %>
+<hr>
+  <p>Title: <%= project.title %></p>
+  <p>Description: <%= project.description %></p>
+  <p><strong>Manager: </strong>
+    <% project.users.each do |user| %>
+    <%= user.name %>
+    <% end %>
+  </p>
+  <%= link_to "Bugs in this project" %>
+<hr>
+<% end %>
