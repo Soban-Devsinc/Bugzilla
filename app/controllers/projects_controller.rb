@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :get_project, only: [:show, :edit, :update, :destroy]
   def index
-    @projects = current_user.projects # for manager
+    @projects = current_user.projects # for manager & developer
     @allprojects = Project.all # for qa
   end
 
@@ -21,15 +21,15 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @managers = @project.users.where(usertype: 'Manager')
+    @developers = @project.users.where(usertype: 'Developer')
   end
 
   def edit
-    @developers = User.where(usertype: 'Developer')
-    @bugs = Bug.all
+    @developer = User.where(usertype: 'Developer')
   end
 
   def update
-
     if @project.update(project_params)
       redirect_to project_path(@project), notice: 'Project was successfully updated.'
     else
@@ -37,6 +37,7 @@ class ProjectsController < ApplicationController
       render :edit
     end
   end
+
 
   def destroy
     @project.destroy

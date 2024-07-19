@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+
+  get 'bugs/assign_bugs', to: 'bug#show'
 end

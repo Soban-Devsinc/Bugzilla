@@ -1,13 +1,15 @@
 <h1> Following are all Projects </h1>
 
 <% @allprojects.each do |project| %>
-<p>Title: <%= project.title %></p>
-<p>Description: <%= project.description %></p>
-  <% project.users.each do |u| %>
-    <p>Manager: <%= u.name %></p>
-  <% end %>
+<hr>
+  <p>Title: <%= project.title %></p>
+  <p>Description: <%= project.description %></p>
     <% project.users.each do |u| %>
-    <p>Developer: <%= u.name %></p>
-  <% end %>
-<br>
+      <p>Manager: <%= u.name %></p>
+    <% end %>
+      <% project.users.each do |u| %>
+      <p>Developer: <%= u.name %></p>
+    <% end %>
+    <%= link_to "Assign bugs to this project", 'bugs/show' %>
+<hr>
 <% end %>

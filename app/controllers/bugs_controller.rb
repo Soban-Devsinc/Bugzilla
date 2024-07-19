@@ -1,7 +1,7 @@
 class BugsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_bug, only: [:show, :edit, :update, :destroy]
+  before_action :set_bug, only: [:edit, :update, :destroy]
   def index
     @bugs = current_user.bugs
   end
@@ -47,9 +47,6 @@ class BugsController < ApplicationController
   end
 
   def bug_params
-    # params.require(:bug).permit(:title, :description, :deadline, :image, :bug_type, :status)
-    params.require(:bug).permit!
+    params.require(:bug).permit(:title, :description, :deadline, :image, :bug_type, :status)
   end
-
-
 end

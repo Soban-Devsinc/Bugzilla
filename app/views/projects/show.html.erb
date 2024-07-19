@@ -5,9 +5,15 @@
 <p><strong>Title:</strong> <%= @project.title %></p>
 <p><strong>Description:</strong> <%= @project.description %></p>
 
-<p><strong>Users:</strong>
-<% @project.users.each do |u| %>
+<p><strong>Manager:</strong>
+<% @managers.each do |u| %>
 <%= u.name %>
+<% end %>
+</p>
+
+<p><strong>Developer:</strong>
+<% @developers.each do |u| %>
+<%= u.name %> -
 <% end %>
 </p>
 

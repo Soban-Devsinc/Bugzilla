@@ -11,10 +11,12 @@
     <%= p.label :description %><br>
     <%= p.text_area :description %>
   </div>
+
   <div>
     <%= p.label "Select Developers" %><br>
-    <%= p.collection_check_boxes :user_ids, @developers, :id, :name %>
+    <%= p.collection_check_boxes :user_ids, @developer, :id, :name %>
   </div>
+
   <div>
     <%= p.submit 'Update Project' %>
   </div>
